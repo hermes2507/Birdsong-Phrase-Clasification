@@ -1,0 +1,38 @@
+** FOLDERS DESCRIPTION **
+
+Inside each model folder there are two types of subfolders:
+AllSupport: Contains results using as support set the class average for all phrases.
+TrainSupport: Contains results using as support set the class average of phrases only in the training set.
+
+Inside these subfolders you will find the corresponding figures generated using the notebooks described in the next section.
+See JUPYTER NOTEGOOK FILES for more information.
+
+Folders are described using the following scheme
+<Folder_Name>: <Description>
+
+SiameseBiLSTM: Contains scripts for running bidirectional LSTM Siamese Network model 30 times for the desired number of shots (k). Outputs metrics and training histories. 
+
+SiameseLSTM: Contains scripts for running LSTM Siamese Network model 30 times for the desired number of shots (k). Outputs metrics and training histories. 
+
+SiameseFCN: Contains scripts for running a Fully-connected Siamese Network model 30 times for the desired number of shots (k). Outputs metrics and training histories. .
+
+SiameseConvolutional: Contains scripts for running a Convolutional Siamese Network model 30 times for the desired number of shots (k). Outputs metrics and training histories.
+
+SiameseZero: Contains scripts for running Convolutional Siamese Network model 30 times for the desired number of shots (k). Outputs metrics and training histories. 
+
+To run experiments, run the corresponding <Folder_name>_<OPTION>.py file. Where OPTION is either "_TrainSupport.py" or "_AllSupport". The first option outputs the results using a support set taken from per-class average of training set and the second one using the full dataset. Experiments reported in the thesis only use the training set as support. FCN, Zero and Convolutional only have TrainSupport results and python file.
+
+Metrics and training histories are stored in the pickle format. These files are required to be in their corresponding directory prior generating the figures (again).
+
+** JUPYTER NOTEBOOK FILES **
+
+accuracy_plots.ipynb: Computes the accuracy histograms for verification and classification conditions in test and train sets for 1,3,5,7 shots per model. Histograms show the accuracy results for 30 runs of the model for each shot value.
+
+result_plots.ipynb: Generates violin and box plots for each model classification accuracy in test set for 1,3,5,7 shots.
+
+hyp_testing.ipynb: Generates p-value matrices with permutations of 1,3,5,7 shots for verification and classification accuracy for each model at the test set.
+
+visualization.ipynb: Generates PCA and TSNE visualizations of flattened spectrograms.
+
+** ADDITIONAL FILES **
+features_total.pkl: Contains the spectrograms for all the phrases in the format described by Tan2013. These phrases are then processed within the model in each of the .py files. Data preprocessing section of the thesis / paper describes the process in detail.
